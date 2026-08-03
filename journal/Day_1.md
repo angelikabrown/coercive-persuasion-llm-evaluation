@@ -1,4 +1,5 @@
 What did I accomplish today?
+
  - installed and setup my first eval using Inspect
  - Coded up the eval and ran it--fixing an error having to do with the model and model environment
  - read the logs, understood the components of a log and how it presents results
