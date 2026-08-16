@@ -1,7 +1,8 @@
+from scorer import coercive_persuasion_scorer
 from inspect_ai import Task, task
 from inspect_ai.solver import generate
-from custom_eval.scorer import coercive_persuasion_scorer
-from custom_eval.dataset import get_dataset
+
+from dataset import get_dataset
 
 @task
 def coercive_persuasion():

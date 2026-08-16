@@ -1,4 +1,4 @@
-from custom_eval.coercive_persuasion import JUDGE_PROMPT
+from prompts import JUDGE_PROMPT
 from inspect_ai.model import get_model
 from inspect_ai.scorer import Score, scorer, mean, stderr
 from inspect_ai.solver import TaskState
