@@ -1,0 +1,5 @@
+inspect-ai==0.3.251
+pydantic>=2.13.0
+openai
+anthropic
+google-genai
