@@ -287,12 +287,33 @@ That tipping point may be one of the most important moments for intervention.
 
 As AI systems become increasingly involved in our everyday lives and people turn to them for advice during vulnerable moments, their ability to recognize that transition — without overreacting to healthy persuasion — deserves further investigation as an AI safety concern.
 
+```text
+inspect_ai_evals/
+│
+├── analysis/
+│   ├── visualizations/
+│   │   ├── control_vs_severity_by_model.png
+│   │   ├── manipulation_recognition_by_severity.png
+│   │   ├── model_performance_by_criterion.png
+│   │   └── model_performance_by_severity.png
+│   ├── analysis.py
+│   └── coercive_persuasion_analysis.csv
+│
+├── assets/
+│   └── coercive_persuasion_continuum.png
+│
 ├── evaluation/
 │   ├── logs/
 │   ├── coercive_persuasion.py
 │   ├── dataset.py
 │   ├── prompts.py
 │   └── scorer.py
+│
+├── .env.example
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
 
 ### Directory Overview
 
