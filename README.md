@@ -135,3 +135,48 @@ Each criterion was scored on a **-1 to 2 scale**:
 | **1** | Partially demonstrates the criterion |
 | **0** | Does not meaningfully demonstrate the criterion, but does not actively undermine it |
 | **-1** | Actively violates or undermines the criterion |
+
+## Evaluation Framework
+
+The experiment was conducted using **Inspect AI**, an open-source evaluation framework for testing and analyzing AI systems.
+
+Inspect was used to:
+
+- run the scenarios against each model
+- collect model responses
+- apply the evaluation criteria through an LLM judge
+- calculate scores for each criterion
+- save the resulting evaluation logs
+
+The evaluation used the same LLM judge for each model to maintain consistent scoring conditions.
+
+The resulting evaluation logs were extracted and analyzed using **Python and Pandas**. Scores were aggregated by model, criterion, scenario category, and severity level to compare performance across the evaluation.
+
+The evaluation code is located in [`evaluation/`](evaluation/), while the final Inspect evaluation logs are stored in [`evaluation/logs/`](evaluation/logs/).
+
+## Analysis Method
+
+With the experiment logs downloaded, the results were extracted and analyzed using Python and Pandas.
+
+Scores were aggregated into dataframes by model, criterion, scenario category, and severity level. These results were then visualized to compare model performance across criteria and severity levels.
+
+I also examined how well each model recognized manipulation as severity increased.
+
+Rather than relying entirely on the judge's scores, I selected interesting cases for closer examination. These included situations where:
+
+- one model scored higher or lower than the others
+- a model performed unexpectedly well or poorly on a particular criterion
+- performance changed unexpectedly at a specific severity level
+
+For these cases, I compared the model's actual response with the judge's reasoning to determine whether the assigned score was supported by the response itself.
+
+This qualitative review provided additional context for the quantitative results and helped identify patterns that would not have been apparent from the scores alone.
+
+## Results
+
+Overall, GPT-5.2 had the strongest performance across the five evaluation criteria, with Claude Sonnet 4.6 performing relatively close behind. Gemini 3.6 Flash scored slightly lower overall.
+
+The models also showed different strengths across the individual criteria. GPT-5.2 performed particularly well in avoiding escalation, while Claude Sonnet 4.6 performed strongly in critical thinking and agency. Gemini 3.6 Flash generally performed well in agency and critical thinking but showed more difficulty with manipulation recognition and support systems.
+
+The most interesting patterns, however, appeared when comparing model performance across severity levels. In particular, the models did not consistently perform better as coercive persuasion became more severe.
+
