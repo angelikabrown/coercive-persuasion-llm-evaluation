@@ -288,7 +288,7 @@ That tipping point may be one of the most important moments for intervention.
 As AI systems become increasingly involved in our everyday lives and people turn to them for advice during vulnerable moments, their ability to recognize that transition — without overreacting to healthy persuasion — deserves further investigation as an AI safety concern.
 
 ```text
-inspect_ai_evals/
+coercive-persuasion-llm-evaluation/
 │
 ├── analysis/
 │   ├── visualizations/
