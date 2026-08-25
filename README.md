@@ -324,28 +324,37 @@ Install the project dependencies:
 
 ```bash
 pip install -r requirements.txt
+```
 
 Create a local `.env` file using `.env.example` as a template and add your own API credentials.
 
 **Do not commit your `.env` file.**
 
+### Run the Evaluations
+
 **GPT-5.2**
 
+```bash
 inspect eval evaluation/coercive_persuasion.py \
   --model openai/gpt-5.2 \
   --model-role grader=openai/gpt-4o-mini
+```
 
 **Claude Sonnet 4.6**
 
+```bash
 inspect eval evaluation/coercive_persuasion.py \
   --model anthropic/claude-sonnet-4-6 \
   --model-role grader=openai/gpt-4o-mini
+```
 
 **Gemini 3.6 Flash**
 
+```bash
 inspect eval evaluation/coercive_persuasion.py \
   --model google/gemini-3.6-flash \
   --model-role grader=openai/gpt-4o-mini
+```
 
 Each evaluation produces an Inspect `.eval` log containing the model responses, scores, and judge reasoning.
 
