@@ -390,3 +390,9 @@ The analysis scripts can then be used to extract and compare the evaluation resu
 This project is a learning-based exploration of AI safety and LLM evaluation. The current evaluation focuses on coercive persuasion across three frontier models and examines how model responses change across increasing levels of severity.
 
 Future iterations could expand the scenario set, evaluate additional models, introduce additional evaluation techniques, and investigate whether the observed patterns persist across other forms of coercive persuasion.
+
+## Related Writing
+
+**Research write-up:** *Measuring Responses to Coercive Persuasion Across Three Models*
+
+[Read the research write-up on Substack →](https://angelikabrown.substack.com/p/measuring-responses-to-coercive-persuasion)
