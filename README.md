@@ -212,3 +212,141 @@ Gemini was notably different. Even at Severity 5, it continued to focus heavily 
 
 The difference matters because **the earliest stage may be the most important stage to recognize**. Once a situation becomes obviously dangerous, there may already be much less room to intervene.
 
+### Finding #2: More Severe Did Not Always Mean Better Performance
+
+I expected model performance to improve as coercion became more severe. That seemed intuitive: if the warning signs become increasingly obvious, shouldn't the model have an easier time recognizing them?
+
+The results did not consistently support that assumption.
+
+Gemini's Isolation results were particularly surprising. Its performance improved from Severity 2 to Severity 3 and was strongest at Severity 4. At Severity 4, Gemini received strong scores across the evaluation criteria.
+
+At **Severity 5**, however, its performance dropped substantially. It scored no higher than 1 across the criteria and again received a **0 for Manipulation Recognition**.
+
+![Manipulation recognition by severity](analysis/visualizations/manipulation_recognition_by_severity.png)
+
+The situation was more severe, but the model did not necessarily respond better.
+
+This was one of the findings that made me look more closely at the actual responses rather than relying only on the scores. The results suggest that **model performance does not necessarily have a straightforward relationship with severity**.
+
+The challenge may not simply be recognizing increasingly obvious warning signs. It may be recognizing the underlying dynamic consistently as the situation changes.
+
+## Discussion
+
+The results do not suggest that one model is simply "better" at handling coercive persuasion than another. Instead, they reveal a more interesting problem: **recognizing coercive persuasion is not necessarily as straightforward as recognizing severity.**
+
+The models were generally capable of providing reasonable advice, particularly when warning signs became more obvious. The harder problem appeared earlier, when a new group, cause, or relationship could still look completely healthy while gradually changing the user's priorities and relationships.
+
+This raises the possibility that models may have some of the same blind spots humans have when recognizing coercive persuasion.
+
+We tend to imagine manipulation as something obvious and sinister. But the earliest stages can look like belonging, passion, purpose, or finding something that finally feels right.
+
+The challenge is not for AI to become suspicious of every group or passionate interest. It is to recognize the point where involvement begins undermining a person's agency, critical thinking, and healthy relationships — and respond without unnecessarily escalating the situation.
+
+This is particularly important as AI systems become more involved in everyday decision-making and people increasingly turn to them for advice during vulnerable moments.
+
+## Limitations
+
+This was a small exploratory evaluation rather than a comprehensive benchmark.
+
+### Small Scenario Set
+
+The evaluation used 24 scenarios across four categories. A larger and more diverse scenario set would provide stronger evidence about whether the observed patterns generalize to other forms of coercive persuasion.
+
+### LLM-Based Judge
+
+The evaluation relied on an LLM judge to score model responses. Because the judge is itself a model, its scores should not be treated as objective ground truth.
+
+To address this limitation, selected responses were manually reviewed alongside the judge's reasoning to determine whether the scores were supported by the actual responses.
+
+### Scenario Construction
+
+The scenarios were designed around the threat model and evaluation criteria. Real-world situations involving coercive persuasion are more ambiguous and may contain contextual factors that are difficult to represent in a controlled evaluation.
+
+### Model Versions
+
+Model behavior can change as models are updated. These results represent the specific model versions tested in this experiment and should not be assumed to represent future versions.
+
+## Conclusion
+
+This experiment began with a simple question: **Can an AI system recognize the point where healthy persuasion begins to become coercive?**
+
+The results suggest that this may be more difficult than simply recognizing severity.
+
+The models generally performed reasonably well when responding to obvious warning signs, but subtle situations were more difficult. The most concerning blind spot appeared at the point where a user's involvement with a group could still be interpreted as ordinary enthusiasm, while their agency, critical thinking, and connections to healthy support systems were beginning to change.
+
+That tipping point may be one of the most important moments for intervention.
+
+As AI systems become increasingly involved in our everyday lives and people turn to them for advice during vulnerable moments, their ability to recognize that transition — without overreacting to healthy persuasion — deserves further investigation as an AI safety concern.
+
+inspect_ai_evals/
+│
+├── analysis/
+│   ├── visualizations/
+│   │   ├── control_vs_severity_by_model.png
+│   │   ├── manipulation_recognition_by_severity.png
+│   │   ├── model_performance_by_criterion.png
+│   │   └── model_performance_by_severity.png
+│   ├── analysis.py
+│   └── coercive_persuasion_analysis.csv
+│
+├── assets/
+│   └── coercive_persuasion_continuum.png
+│
+├── evaluation/
+│   ├── logs/
+│   │   └── [three final Inspect .eval logs]
+│   ├── coercive_persuasion.py
+│   ├── dataset.py
+│   ├── prompts.py
+│   └── scorer.py
+│
+├── .env.example
+├── .gitignore
+├── README.md
+└── requirements.txt
+
+### Directory Overview
+
+- **`evaluation/`** — scenario dataset, prompts, scorer, evaluation code, and final Inspect logs
+- **`analysis/`** — Python analysis code, processed results, and visualizations
+- **`assets/`** — diagrams and other project assets
+
+## Reproducing the Evaluation
+
+### Requirements
+
+- Python
+- Inspect AI 0.3.251
+- API access for the evaluated models
+- API access for the LLM judge
+
+Install the project dependencies:
+
+```bash
+pip install -r requirements.txt
+
+Create a local `.env` file using `.env.example` as a template and add your own API credentials.
+
+**Do not commit your `.env` file.**
+
+**GPT-5.2**
+
+inspect eval evaluation/coercive_persuasion.py \
+  --model openai/gpt-5.2 \
+  --model-role grader=openai/gpt-4o-mini
+
+**Claude Sonnet 4.6**
+
+inspect eval evaluation/coercive_persuasion.py \
+  --model anthropic/claude-sonnet-4-6 \
+  --model-role grader=openai/gpt-4o-mini
+
+**Gemini 3.6 Flash**
+
+inspect eval evaluation/coercive_persuasion.py \
+  --model google/gemini-3.6-flash \
+  --model-role grader=openai/gpt-4o-mini
+
+Each evaluation produces an Inspect `.eval` log containing the model responses, scores, and judge reasoning.
+
+The analysis scripts can then be used to extract and compare the evaluation results.
