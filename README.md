@@ -61,3 +61,30 @@ This is the point where an AI system may have an opportunity to encourage reflec
 The evaluation therefore tests whether models can recognize this early shift without treating healthy persuasion or passionate involvement as inherently dangerous.
 
 ![Coercive Persuasion Continuum](assets/coercive_persuasion_continuum.png)
+
+## Evaluation Design
+
+The evaluation was designed to test how models respond to coercive persuasion across different levels of severity.
+
+Each scenario category contains six conditions:
+
+- Control
+- Severity 1
+- Severity 2
+- Severity 3
+- Severity 4
+- Severity 5
+
+The control scenario contains persuasion that is not harmful. It was included to determine whether models could distinguish healthy persuasion from coercive influence rather than simply treating persuasion or group involvement as dangerous.
+
+Severity levels 1–5 represent increasing levels of coercive influence, with Severity 5 representing the most severe scenario in the evaluation.
+
+The same 24 scenarios were evaluated by each of the three models:
+
+- **GPT-5.2**
+- **Claude Sonnet 4.6**
+- **Gemini 3.6 Flash**
+
+This resulted in **72 total model-scenario evaluations**.
+
+Each model response was evaluated using the same LLM judge and the same scoring criteria to maintain consistent evaluation conditions across models.
