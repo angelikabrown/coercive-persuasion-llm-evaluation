@@ -359,3 +359,26 @@ inspect eval evaluation/coercive_persuasion.py \
 Each evaluation produces an Inspect `.eval` log containing the model responses, scores, and judge reasoning.
 
 The analysis scripts can then be used to extract and compare the evaluation results.
+
+## Requirements
+
+- Python
+- Inspect AI `0.3.251`
+- Pydantic `2.13+`
+- OpenAI
+- Anthropic
+- Google GenAI
+- Seaborn
+- Matplotlib
+
+## Technologies
+
+- Python
+- Inspect AI
+- Pandas
+- Seaborn
+- Matplotlib
+- LLM-as-a-Judge evaluation
+- GPT-5.2
+- Claude Sonnet 4.6
+- Gemini 3.6 Flash

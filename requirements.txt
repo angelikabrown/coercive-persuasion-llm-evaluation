@@ -3,5 +3,6 @@ pydantic>=2.13.0
 openai
 anthropic
 google-genai
+pandas
 seaborn
 matplotlib
