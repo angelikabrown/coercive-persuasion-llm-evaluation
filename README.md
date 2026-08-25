@@ -382,3 +382,11 @@ The analysis scripts can then be used to extract and compare the evaluation resu
 - GPT-5.2
 - Claude Sonnet 4.6
 - Gemini 3.6 Flash
+
+## Project Status
+
+**Completed exploratory evaluation**
+
+This project is a learning-based exploration of AI safety and LLM evaluation. The current evaluation focuses on coercive persuasion across three frontier models and examines how model responses change across increasing levels of severity.
+
+Future iterations could expand the scenario set, evaluate additional models, introduce additional evaluation techniques, and investigate whether the observed patterns persist across other forms of coercive persuasion.
