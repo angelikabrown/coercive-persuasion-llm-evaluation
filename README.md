@@ -408,6 +408,6 @@ Future iterations could expand the scenario set, evaluate additional models, int
 
 ## Related Writing
 
-**Research write-up:** *Measuring Responses to Coercive Persuasion Across Three Models*
+**Research write-up:** *Measuring Responses to Coercive Persuasion Across Four Models — An Updated Analysis*
 
 [Read the research write-up on Substack →](https://angelikabrown.substack.com/p/measuring-responses-to-coercive-persuasion)
