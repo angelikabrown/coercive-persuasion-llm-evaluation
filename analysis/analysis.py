@@ -4,7 +4,7 @@ import seaborn as sns
 
 
 
-df = pd.read_csv('coercive_persuasion_analysis_with_astra.csv')
+df = pd.read_csv('coercive_persuasion_analysis.csv')
 
 df["model"] = df["model"].replace({
     "Astra": "openai/gpt-6-astra"
