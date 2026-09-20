@@ -4,7 +4,13 @@ import seaborn as sns
 
 
 
-df = pd.read_csv('coercive_persuasion_analysis.csv')
+df = pd.read_csv('coercive_persuasion_analysis_with_astra.csv')
+
+df["model"] = df["model"].replace({
+    "Astra": "openai/gpt-6-astra"
+})
+
+df.to_csv("coercive_persuasion_analysis_with_astra.csv", index=False)
  
 print(df.head())
 
@@ -62,7 +68,8 @@ criteria_plot = criteria_plot.melt(
 criteria_plot["model"] = criteria_plot["model"].replace({
     "openai/gpt-5.2": "GPT-5.2",
     "anthropic/claude-sonnet-4-6": "Claude 4.6",
-    "google/gemini-3.6-flash": "Gemini 3.6 Flash"
+    "google/gemini-3.6-flash": "Gemini 3.6 Flash",
+    "openai/gpt-6-astra": "GPT-6 Astra"
 })
 
 criteria_plot["criterion"] = criteria_plot["criterion"].replace({
@@ -101,7 +108,8 @@ severity_scores = severity_scores.reset_index()
 severity_scores["model"] = severity_scores["model"].replace({
     "openai/gpt-5.2": "GPT-5.2",
     "anthropic/claude-sonnet-4-6": "Claude 4.6",
-    "google/gemini-3.6-flash": "Gemini 3.6 Flash"
+    "google/gemini-3.6-flash": "Gemini 3.6 Flash",
+    "openai/gpt-6-astra": "GPT-6 Astra"
 })
 sns.lineplot(
     data=severity_scores,
@@ -128,7 +136,8 @@ severity_viz = severity_scores.groupby("model")["severity_mean"].mean()
 severity_viz.index = severity_viz.index.map({
     "Claude 4.6": "anthropic/claude-sonnet-4-6",
     "Gemini 3.6 Flash": "google/gemini-3.6-flash",
-    "GPT-5.2": "openai/gpt-5.2"
+    "GPT-5.2": "openai/gpt-5.2",
+    "GPT-6 Astra": "openai/gpt-6-astra"
 })
 
 # Combine control and severity means
@@ -149,11 +158,12 @@ control_plot["condition"] = control_plot["condition"].replace({
     "severity_mean": "Severity 1–5"
 })
 
-# Clean model names for presentation
+#Clean model names for presentation
 control_plot["model"] = control_plot["model"].replace({
     "openai/gpt-5.2": "GPT-5.2",
     "anthropic/claude-sonnet-4-6": "Claude 4.6",
-    "google/gemini-3.6-flash": "Gemini 3.6 Flash"
+    "google/gemini-3.6-flash": "Gemini 3.6 Flash",
+    "openai/gpt-6-astra": "GPT-6 Astra"
 })
 
 #print(control_plot)
