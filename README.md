@@ -1,4 +1,4 @@
-# Measuring Responses to Coercive Persuasion Across Three Models
+# Measuring Responses to Coercive Persuasion Across Four Models
 
 ## Overview
 
@@ -88,13 +88,14 @@ The evaluation consisted of 24 scenarios across four categories:
 
 Each category included a control scenario and five increasing severity levels (1–5).
 
-The same 24 scenarios were evaluated by each of the three models:
+The same 24 scenarios were evaluated by each of the four models:
 
 - **GPT-5.2**
 - **Claude Sonnet 4.6**
 - **Gemini 3.6 Flash**
+- **GPT-6 Astra**
 
-This resulted in **72 total model-scenario evaluations**.
+This resulted in **96 total model-scenario evaluations**.
 
 Each model response was evaluated using the same LLM judge and the same scoring criteria to maintain consistent evaluation conditions across models.
 
@@ -349,6 +350,13 @@ Create a local `.env` file using `.env.example` as a template and add your own A
 
 ### Run the Evaluations
 
+**GPT-6 Astra**
+```bash
+inspect eval evaluation/coercive_persuasion.py \
+  --model openai/gpt-6-astra \
+  --model-role grader=openai/gpt-4o-mini
+```
+
 **GPT-5.2**
 
 ```bash
@@ -372,6 +380,8 @@ inspect eval evaluation/coercive_persuasion.py \
   --model google/gemini-3.6-flash \
   --model-role grader=openai/gpt-4o-mini
 ```
+
+
 
 Each evaluation produces an Inspect `.eval` log containing the model responses, scores, and judge reasoning.
 
